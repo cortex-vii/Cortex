@@ -3,25 +3,137 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --primary-color: #181840;
+    --secundary-color: #4A4A4A;
+    --grey-color: #72757a;
+    --light-grey-color: #bfbfbf;
+    --white-color: #ffffff;
+    --error-color: #f91d1d;
+    --success-color: #78ff5d;
+  
+    /* Cores de fontes */
+    --font-color: #434343;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  body{
+    background-color: #FFFFFF;
+    height: auto;
+    width: 100vw;
   }
-}
+  /* Cores principais */
+  .primary-color {
+    color: var(--primary-color);
+  }
+  
+  .secondary-color {
+    color: var(--secundary-color);
+  }
+  
+  .grey-color {
+    color: var(--grey-color);
+  }
+  
+  .light-grey-color {
+    color: var(--light-grey-color);
+  }
+  
+  .white-color {
+    color: var(--white-color);
+  }
+  
+  .error-color {
+    color: var(--error-color);
+  }
+  
+  .success-color {
+    color: var(--success-color);
+  }
+  
+  /* Cores de fundo */
+  .bg-primary {
+    background-color: var(--primary-color);
+  }
+  
+  .bg-secondary {
+    background-color: var(--secundary-color);
+  }
+  
+  .bg-grey {
+    background-color: var(--grey-color);
+  }
+  
+  .bg-light-grey {
+    background-color: var(--light-grey-color);
+  }
+  
+  .bg-white {
+    background-color: var(--white-color);
+  }
+  
+  .bg-error {
+    background-color: var(--error-color);
+  }
+  
+  .bg-success {
+    background-color: var(--success-color);
+  }
+  
+  /* Cores de fontes */
+  .font-color {
+    color: var(--font-color);
+  }
+  
+  /* Define o estilo para o título principal */
+  h1 {
+    text-align: left;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+  
+  h2 {
+    text-align: left;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  h3 {
+    text-align: left;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+  /* Define o estilo para o texto dentro de span */
+  span {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--primary-color);
+  }
+  p {
+    font-size: 16px;
+    color: var(--font-color);
+  }
+  
+  /* Utilize a variável para a cor primária */
+  .primary-color {
+    color: var(--primary-color);
+  }
+  
+  /* Define o estilo para o contêiner principal */
+  .app-container {
+    margin: auto;
+    padding: 16px;
+    max-width: 930px;
+    
+  }
+  .title-container{
+
+    margin-bottom: 64px;
+  }
+
+  .section-form{
+    margin-bottom: 24px;
+  }
+  

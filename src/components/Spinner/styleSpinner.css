@@ -1,0 +1,14 @@
+/* styles.css */
+.spinner-border {
+    width: 2rem;
+    height: 2rem;
+    border: 0.25em solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #f5f3f3;
+    animation: spinner-border .75s linear infinite;
+  }
+  
+  @keyframes spinner-border {
+    to { transform: rotate(360deg); }
+  }
+  
