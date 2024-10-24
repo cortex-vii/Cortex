@@ -1,5 +1,5 @@
 // app/endpoints.ts
-export const API_BASE_URL = "https://06da-2804-61d0-1062-9001-cd0e-d9e4-fb9b-ab53.ngrok-free.app/api/v1/";
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 // Função para pegar apenas o que vem após a última barra
 export const cleanHttptUrl = (nextUrl: string | null): string | null => {
