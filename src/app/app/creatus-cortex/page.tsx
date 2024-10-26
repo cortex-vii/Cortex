@@ -86,7 +86,8 @@ export default function CreatusCortex() {
 
   return (
     <>
-      <Alert className="mb-4 bg-white">
+      <div className="p-4 mb-4 bg-white rounded-lg">
+
         <RocketIcon className="h-4 w-4" />
         <AlertTitle>
           <strong>
@@ -119,7 +120,7 @@ export default function CreatusCortex() {
             </Tooltip>
           </TooltipProvider>
         </div>
-      </Alert>
+      </div>
       <Summary
         title1="Créditos"
         value1={balance}

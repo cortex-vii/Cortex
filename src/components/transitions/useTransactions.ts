@@ -1,7 +1,6 @@
 // app/useTransactions.ts
 import axiosInstance from "@/app/services/http/axiosConfig";
 import { CreditTransactionData } from "@/interfaces/type";
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useTransactions = () => {
