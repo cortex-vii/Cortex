@@ -47,7 +47,7 @@ export default function Component() {
     {
       icon: <LayoutDashboard className="mr-2 h-4 w-4" />,
       label: "Dashboard",
-      link: "dashboard",
+      link: "/app/dashboard",
       service: "dashboard",
       subItems: [], // Dashboard não tem subitems
     },
@@ -66,20 +66,73 @@ export default function Component() {
       subItems: [
         {
           label: "Real Creatus",
-          link: "/app/creatus-cortex",
+          link: "/app/creatus/cortex-creatus",
           description: "Criação de imagens realistas de perfis",
         },
         {
           label: "Creatus Upscale",
-          link: "/app/creatus-cortex",
-          description: "Criação de imagens realistas de perfis",
+          link: "/app/creatus/cortex-upscale",
+          description: "Recuperaçã de imagens",
+        },
+        {
+          label: "Córtex AvatarCraft",
+          link: "/app/creatus/cortex-avatarcraft",
+          description:
+            "Criação de avatares personalizados em diversos estilos.",
+        },
+        {
+          label: "Córtex Fantasy",
+          link: "/app/creatus/cortex-fantasy",
+          description:
+            "Geração de cenários fantásticos e personagens em desenho com traços Disney",
+        },
+        {
+          label: "Córtex Artify",
+          link: "/app/creatus/cortex-artify",
+          description:
+            "Transformação de fotos em obras de arte com estilos variados.",
+        },
+        {
+          label: "Córtex MoodMaster",
+          link: "/app/creatus/cortex-moodmaster",
+          description:
+            "Aplicação de filtros sazonais e estilos para atmosferas únicas.",
+        },
+        {
+          label: "Córtex InspiraPic",
+          link: "/app/creatus/cortex-inspirapic",
+          description:
+            "Criação de imagens a partir de palavras-chave para cenas naturais e objetos.",
+        },
+        {
+          label: "Córtex MockUp Magic",
+          link: "/app/creatus/cortex-mockup-magic",
+          description:
+            "Desenvolvimento de designs de produtos com mockups realistas.",
+        },
+        {
+          label: "Córtex MapForge",
+          link: "/app/creatus/cortex-mapforge",
+          description: "Criação de mapas de fantasia e layouts de cidades.",
+        },
+        {
+          label: "Córtex SerenityScapes",
+          link: "/app/creatus/cortex-serenityscapes",
+          description:
+            "Geração de paisagens relaxantes e inspiradoras para meditação.",
+        },
+        {
+          label: "Córtex Brandly",
+          link: "/app/creatus/cortex-brandly",
+          description:
+            "Desenvolvimento de logotipos e identidades visuais únicas para marcas.",
         },
       ],
     },
   ];
 
   return (
-    <>
+    <div className="z-40">
       {/* Sidebar */}
       <aside
         className={`fixed top-0 left-0 z-40 w-64 h-screen bg-white shadow-md transition-transform duration-300 ease-in-out ${
@@ -118,9 +171,10 @@ export default function Component() {
                     }
                   />
                   {openSubmenuIndex === index && (
+                    /* Submenu */
                     <div
                       ref={submenuRef} // Ref para detecção de clique fora
-                      className={`grid grid-cols-1 md:grid-cols-2 gap-2 p-2 rounded-lg absolute custom-z-index top-0 left-24 bg-white shadow-lg border transition-all duration-300 ease-in-out w-[400px]`} // Largura fixa para o submenu
+                      className={`grid grid-cols-1 md:grid-cols-2 gap-2 p-2 rounded-lg absolute top-0 left-24 bg-white shadow-lg border transition-all duration-300 ease-in-out w-[300px] md:w-[450px] max-h-[600px] overflow-y-auto custom-scrollbar`}
                     >
                       {item.subItems.map((subItem, subIndex) => (
                         <Link
@@ -166,7 +220,7 @@ export default function Component() {
         </nav>
 
         {/* Rodapé do menu lateral */}
-        <div className="absolute bottom-4 space-y-2 w-[calc(100%-2rem)] px-4">
+        <div className="absolute bottom-4 space-y-2 w-[calc(100%-2rem)] px-4 -z-10">
           <MenuItem
             icon={<HelpCircle className="mr-2 h-4 w-4" />}
             text="Help"
@@ -175,26 +229,6 @@ export default function Component() {
         </div>
       </aside>
 
-      {/* Botão para abrir o menu no mobile */}
-      <Button
-        variant="outline"
-        className={`bg-white fixed top-4 left-4 z-50 md:hidden ${
-          isOpen ? "hidden" : "block"
-        }`}
-        onClick={toggleMenu}
-        aria-label="Abrir menu"
-      >
-        <Menu className="h-6 w-6" />
-      </Button>
-
-      {/* Fundo escuro quando o menu está aberto no mobile */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
-          onClick={toggleMenu}
-          aria-hidden="true"
-        />
-      )}
-    </>
+    </div>
   );
 }

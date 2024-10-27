@@ -107,6 +107,17 @@ body {
   }
 }
 
-.custom-z-index {
-  z-index: 10; /* Ajuste o valor conforme necessário */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Largura da barra de rolagem */
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Fundo da área de rolagem */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Cor da barra */
+  border-radius: 8px; /* Arredondamento da barra */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Cor da barra ao passar o mouse */
 }

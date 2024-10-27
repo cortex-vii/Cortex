@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import PromptSection from "@/components/Prompts";
-import { FormcreatusCortex } from "../../../components/forms/AI/creatusCortex/formCreatusCortex";
+import { FormcreatusCortex } from "../../../../components/forms/AI/creatusCortex/formCreatusCortex";
 import Summary from "@/components/summary";
 import { RocketIcon } from "@radix-ui/react-icons";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";

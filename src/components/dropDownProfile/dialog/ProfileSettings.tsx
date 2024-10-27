@@ -29,6 +29,7 @@ export default function SettingsDialog({
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const { profile, loading, error, handleDeleteAccount } = useProfileSettings(isOpen);
 
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="bg-white min-h-[650px] flex flex-col">

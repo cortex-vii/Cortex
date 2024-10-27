@@ -13,7 +13,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { HelpCircle, User, LogOut } from "lucide-react";
 import SettingsDialog from "./dialog/ProfileSettings";
 import { useNotification } from "../../context/notification/NotificationContext";
- 
+
 import { useAuth } from "@/context/authContext/authContext";
 import useProfile from "@/hooks/useProfile";
 
@@ -21,11 +21,9 @@ export default function DropDownProfile() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { openLoad } = useNotification();
   const { logout } = useAuth();
-  
+
   const handleLogout = async () => {
     openLoad();
-    // Simula uma espera de 2 segundos (2000 milissegundos)
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     logout(); // Chama a função de logout do contexto
   };
 
@@ -33,8 +31,11 @@ export default function DropDownProfile() {
     setIsDialogOpen(true);
   };
 
-  const handleDialogClose = () => setIsDialogOpen(false);
-
+  const handleDialogClose = () => {
+    console.log("Dialog state before closing:", isDialogOpen);
+    setIsDialogOpen(false);
+    // Aqui você pode adicionar mais lógica se necessário
+  };
   const profile = useProfile();
 
   // Define o avatar padrão

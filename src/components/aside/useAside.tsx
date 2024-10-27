@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 const useAside = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
   const submenuRef = useRef<HTMLDivElement>(null);
 
