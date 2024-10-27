@@ -145,11 +145,11 @@ export default function Component() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden z-50" // z-50 garante que o botão fique no topo
             onClick={toggleMenu}
             aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
           >
-            <X className="h-6 w-6" />
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
         </div>
 
@@ -228,7 +228,26 @@ export default function Component() {
           <DropDownProfile />
         </div>
       </aside>
+      {/* Button to toggle sidebar menu (visible on mobile) */}
+      <Button
+        variant="outline"
+        className={`fixed top-16 left-4 z-50 p-2 rounded-full shadow-lg bg-white transition-transform transform hover:scale-105 md:hidden ${
+          isOpen ? "hidden" : "block"
+        }`}
+        onClick={toggleMenu}
+        aria-label="Abrir menu"
+      >
+        <Menu className="h-5 w-5 text-gray-800" />
+      </Button>
 
+      {/* Overlay background when the sidebar is open (visible on mobile) */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={toggleMenu}
+          aria-hidden="true"
+        />
+      )}
     </div>
   );
 }
