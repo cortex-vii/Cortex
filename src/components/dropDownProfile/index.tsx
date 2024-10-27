@@ -11,23 +11,45 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { HelpCircle, User, LogOut } from "lucide-react";
-import SettingsDialog from "./dialog/ProfileSettings";
+import SettingsDialog from "./dialog/ProfileSettings"; // Importa o SettingsDialog
 import { useNotification } from "../../context/notification/NotificationContext";
-
 import { useAuth } from "@/context/authContext/authContext";
 import useProfile from "@/hooks/useProfile";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 
 export default function DropDownProfile() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { openLoad } = useNotification();
   const { logout } = useAuth();
+  const profile = useProfile();
+
+  // Define o avatar padrão
+  let picture = profile?.picture;
+  if (picture === "null") {
+    picture = "https://github.com/shadcn.png";
+  }
+
+  const avatarSrc =
+    picture && picture !== "null" ? picture : "https://github.com/shadcn.png";
 
   const handleLogout = async () => {
     openLoad();
     logout(); // Chama a função de logout do contexto
   };
 
-  const handleDialogOpen = async () => {
+  const handleDialogOpen = () => {
     setIsDialogOpen(true);
   };
 
@@ -36,16 +58,6 @@ export default function DropDownProfile() {
     setIsDialogOpen(false);
     // Aqui você pode adicionar mais lógica se necessário
   };
-  const profile = useProfile();
-
-  // Define o avatar padrão
-  let picture = profile?.picture;
-  if (picture == "null") {
-    picture = "https://github.com/shadcn.png";
-  }
-
-  const avatarSrc =
-    picture && picture !== "null" ? picture : "https://github.com/shadcn.png";
 
   return (
     <>
@@ -59,7 +71,6 @@ export default function DropDownProfile() {
                 className="w-full h-full object-cover rounded-full"
               />
             </Avatar>
-            {/* Verifica se o perfil existe antes de tentar acessar propriedades */}
             <span className="font-bold">
               {profile?.first_name || "Usuário"}
             </span>
@@ -78,6 +89,7 @@ export default function DropDownProfile() {
               <User className="mr-2 h-4 w-4" />
               <span>Profile</span>
             </DropdownMenuItem>
+
             <DropdownMenuItem className="mb-2 cursor-pointer">
               <HelpCircle className="mr-2 h-4 w-4" />
               <span>Ajuda e Dúvidas</span>
@@ -92,6 +104,9 @@ export default function DropDownProfile() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {/* Renderiza o SettingsDialog apenas se isDialogOpen for true */}
+
       <SettingsDialog isOpen={isDialogOpen} onClose={handleDialogClose} />
     </>
   );

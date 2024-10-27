@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import ProfileForm from "../../forms/profileForm/ProfileForm";
@@ -13,8 +18,7 @@ import EmailForm from "../../forms/emailForm/EmailForm";
 import LoadingIndicator from "../../loadingIndicator";
 import { Button } from "@/components/ui/button";
 import { useProfileSettings } from "./useProfile";
-
-
+import { X } from "lucide-react";
 
 interface SettingsDialogProps {
   isOpen: boolean;
@@ -27,15 +31,22 @@ export default function SettingsDialog({
 }: SettingsDialogProps) {
   const [activeTab, setActiveTab] = useState("profile");
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const { profile, loading, error, handleDeleteAccount } = useProfileSettings(isOpen);
-
+  const { profile, loading, error, handleDeleteAccount } =
+    useProfileSettings(isOpen);
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-white min-h-[650px] flex flex-col">
-        <DialogHeader>
-          <DialogTitle>Configurações</DialogTitle>
-        </DialogHeader>
+    <AlertDialog open={isOpen} onOpenChange={onClose}>
+      <AlertDialogContent className="bg-white min-h-[650px] flex flex-col">
+        <AlertDialogHeader>
+          <AlertDialogTitle>Configurações</AlertDialogTitle>
+          {/* Botão de fechar "X" no topo */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-1 text-gray-500 hover:text-gray-800 transition-colors"
+          >
+            <X size={18} />
+          </button>
+        </AlertDialogHeader>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1">
           <TabsList className="grid w-full grid-cols-3 gap-1">
             <TabsTrigger value="profile">Perfil</TabsTrigger>
@@ -104,7 +115,7 @@ export default function SettingsDialog({
             </TabsContent>
           </div>
         </Tabs>
-      </DialogContent>
-    </Dialog>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
