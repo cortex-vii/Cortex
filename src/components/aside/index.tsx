@@ -66,7 +66,7 @@ export default function Component() {
       subItems: [
         {
           label: "Real Creatus",
-          link: "/app/creatus/cortex-creatus",
+          link: "/app/creatus/cortex-creatus?service=creatus-cortex",
           description: "Criação de imagens realistas de perfis",
         },
         {

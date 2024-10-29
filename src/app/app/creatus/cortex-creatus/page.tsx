@@ -61,7 +61,8 @@ export default function CreatusCortex() {
     if (serviceData) {
       setNameService(serviceData.name);
       setPkService(serviceData.pk_service);
-
+      
+      
       // Verifica se cost_in_credits é um valor válido antes de formatar
       const cost_in_credits = serviceData.cost_in_credits || "none";
       if (cost_in_credits !== "none") {
@@ -83,7 +84,7 @@ export default function CreatusCortex() {
   if (error) {
     return <p>Erro: {error}</p>;
   }
-
+  console.log(cost);
   return (
     <>
       <div className="p-4 mb-4 bg-white rounded-lg">
